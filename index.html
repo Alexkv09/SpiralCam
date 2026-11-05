@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080808">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="SpiralCam — навчальна камера із золотою спіраллю, двома версіями фото та інтерактивним наведенням.">
+  <title>SpiralCam · Золота спіраль</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M14 4H9l-2 3H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-3-3Z"/><circle cx="12" cy="13.5" r="3.5"/></symbol>
+    <symbol id="i-lightbulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4m-2-20a7 7 0 0 0-4 12.75c.7.48 1 1.25 1 2.25h6c0-1 .3-1.77 1-2.25A7 7 0 0 0 12 2Z"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 18 9 12l6-6"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 11a8 8 0 0 1 14-5l2 2M20 13a8 8 0 0 1-14 5l-2-2"/><path d="M20 3v5h-5M4 21v-5h5"/></symbol>
+    <symbol id="i-flash" viewBox="0 0 24 24"><path d="m13 2-9 11h7l-1 9 10-12h-7l0-8Z"/></symbol>
+    <symbol id="i-flash-off" viewBox="0 0 24 24"><path d="m13 2-4.7 5.8M5.5 11.2 4 13h7l-1 9 7.3-8.8M20 10h-7V2"/><path d="m2 2 20 20"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="M19.4 15.2a1.8 1.8 0 0 0 .4 2l-1.7 1.7a1.8 1.8 0 0 0-2-.4l-1 .5a1.8 1.8 0 0 0-1.2 1.7h-2.5a1.8 1.8 0 0 0-1.2-1.7l-1-.5a1.8 1.8 0 0 0-2 .4l-1.7-1.7a1.8 1.8 0 0 0 .4-2l-.5-1A1.8 1.8 0 0 0 3.7 13V11a1.8 1.8 0 0 0 1.7-1.2l.5-1a1.8 1.8 0 0 0-.4-2L7.2 5a1.8 1.8 0 0 0 2 .4l1-.5a1.8 1.8 0 0 0 1.2-1.7h2.5a1.8 1.8 0 0 0 1.2 1.7l1 .5a1.8 1.8 0 0 0 2-.4l1.7 1.7a1.8 1.8 0 0 0-.4 2l.5 1a1.8 1.8 0 0 0 1.7 1.2V13a1.8 1.8 0 0 0-1.7 1.2l-.5 1Z"/></symbol>
+    <symbol id="i-gallery" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m4 18 5-5 3 3 4-5 4 5"/></symbol>
+    <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0 0 3"/><path d="M20 4v7h-7"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1L12 2Z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3m3 0-.9 13H6.9L6 7M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="m5 12 14 0m-6-6 6 6-6 6"/></symbol>
+  </svg>
+
+  <main id="app" class="app">
+    <section id="homeScreen" class="screen home-screen" aria-label="Головна">
+      <div class="home-head"><div class="brand"><span class="brand-mark">φ</span> SPIRALCAM</div><span class="head-badge">PHOTO LAB</span></div>
+      <div class="hero-art" aria-hidden="true"><canvas id="heroCanvas"></canvas><span class="hero-caption">1 : 1.618</span></div>
+      <div class="hero-copy"><span class="eyebrow">НАВЧАЛЬНА ФОТОЛАБОРАТОРІЯ</span><h1>Побач красу<br><em>золотого перетину.</em></h1><p>Шукай ідеальну композицію, тренуй око та фотографуй зі спіраллю Фібоначчі.</p></div>
+      <div class="home-actions">
+        <button class="home-action home-action-main" id="openCamera"><span class="action-icon"><svg><use href="#i-camera"/></svg></span><span><strong>Камера</strong><small>Знімай зі спіраллю</small></span><svg class="action-arrow"><use href="#i-arrow"/></svg></button>
+        <button class="home-action" id="openIdeas"><span class="action-icon"><svg><use href="#i-lightbulb"/></svg></span><span><strong>Ідеї</strong><small>Сюжети та підказки</small></span><svg class="action-arrow"><use href="#i-arrow"/></svg></button>
+      </div>
+      <p class="home-footnote"><span class="dot"></span> Фото залишаються лише на цьому пристрої</p>
+    </section>
+
+    <section id="cameraScreen" class="screen camera-screen" hidden aria-label="Камера">
+      <header class="camera-header">
+        <div class="header-left">
+          <button id="cameraBack" class="icon-btn" aria-label="На головну" title="На головну"><svg><use href="#i-back"/></svg></button>
+          <button id="flashBtn" class="icon-btn" aria-label="Ліхтарик" title="Ліхтарик"><svg><use href="#i-flash-off"/></svg></button>
+        </div>
+        <button id="ratioBtn" class="ratio-btn" aria-label="Співвідношення сторін" title="Співвідношення сторін">4:5</button>
+        <button id="settingsBtn" class="icon-btn header-right" aria-label="Налаштування" title="Налаштування"><svg><use href="#i-settings"/></svg></button>
+      </header>
+      <div class="camera-workspace">
+        <div id="viewfinder" class="viewfinder">
+          <video id="cameraVideo" autoplay muted playsinline></video>
+          <canvas id="previewCanvas" aria-hidden="true"></canvas>
+          <canvas id="guideCanvas" aria-hidden="true"></canvas>
+          <div id="tapLayer" class="tap-layer" title="У режимі датчика виберіть важливу деталь"></div>
+          <div id="emptyCamera" class="camera-empty"><svg><use href="#i-camera"/></svg><span>Відкриваємо камеру…</span><button id="retryCamera" class="small-gold-button" hidden>Спробувати знову</button></div>
+          <div id="smartHint" class="smart-hint" hidden>
+            <div id="smartState" class="smart-state" hidden></div>
+            <button id="enableSensors" class="smart-sensors" hidden>Увімкнути датчики руху</button>
+          </div>
+          <div class="frame-label" id="frameLabel">ЗОЛОТА СПІРАЛЬ · φ</div>
+        </div>
+      </div>
+      <div class="camera-controls">
+        <div class="guide-tools">
+          <button id="rotateBtn" class="tool-btn" title="Повернути спіраль на 90°"><svg><use href="#i-rotate"/></svg><span>Поворот</span></button>
+          <button id="flipBtn" class="tool-btn" title="Дзеркально відобразити спіраль">⇆ <span>Дзеркало</span></button>
+          <button id="gridBtn" class="tool-btn" title="Показати квадрати Фібоначчі"><svg><use href="#i-grid"/></svg><span>Сітка</span></button>
+          <button id="smartBtn" class="smart-toggle" aria-pressed="false"><svg><use href="#i-target"/></svg> Датчик</button>
+        </div>
+        <div class="camera-extra"><div id="zoom" class="zoom-adjust"><button id="zoomOut" aria-label="Зменшити спіраль">−</button><span id="zoomText">1.0×</span><button id="zoomIn" aria-label="Збільшити спіраль">+</button></div></div>
+        <div class="shutter-row">
+          <button id="galleryBtn" class="gallery-shortcut" title="Відкрити галерею" aria-label="Галерея"><svg><use href="#i-gallery"/></svg><img id="lastThumb" alt="Останній знімок" hidden></button>
+          <button id="shutterBtn" class="shutter" aria-label="Зробити фото" title="Зробити фото"><span></span></button>
+          <button id="switchBtn" class="switch-camera" aria-label="Змінити камеру" title="Змінити камеру"><svg><use href="#i-swap"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="ideasScreen" class="screen ideas-screen" hidden aria-label="Ідеї для фото">
+      <header class="sub-header"><button id="ideasBack" class="icon-btn"><svg><use href="#i-back"/></svg></button><span>Польовий гід</span></header>
+      <div class="ideas-content">
+        <span class="eyebrow">ФОТОГРАФІЯ + МАТЕМАТИКА</span><h2>Золота спіраль</h2><p class="ideas-lead">Проведіть погляд глядача по плавній кривій до головного об’єкта. Завиток підказує, куди розмістити найважливішу деталь.</p>
+        <div class="guide-preview"><canvas id="ideasCanvas"></canvas><div class="preview-label">Завиток → головний герой кадру</div></div>
+        <div class="info-strip"><span>φ ≈ 1,618</span><span>Поворот 90° → масштаб ×1,618</span></div>
+        <div class="ideas-section-head"><h3>Фотоідеї з прикладами</h3><span>5 добірок · 25 фото</span></div>
+        <p class="ideas-swipe-note">Гортайте приклади вбік. Натисніть на фото, щоб роздивитися спіраль зблизька.</p>
+        <div id="ideasCatalog" class="ideas-catalog"></div>
+        <h3>Як працює «Датчик»</h3>
+        <div class="steps"><div><b>1</b><p>Увімкніть «Датчик» і дозвольте доступ до руху телефона.</p></div><div><b>2</b><p>Торкніться важливої деталі у відеокадрі — ціль закріпиться.</p></div><div><b>3</b><p>Повільно обертайте телефон на місці, суміщаючи мітку із завитком.</p></div><div><b>4</b><p>Коли напрямна зелена, фотографуйте.</p></div></div>
+        <div class="guide-caveat">Режим «Датчик» відстежує поворот телефона за гіроскопом, а не рух предмета у відео. Рухайте телефоном з однієї точки. Для точної фіксації об’єкта потрібен комп’ютерний зір.</div>
+        <button class="primary-cta" id="ideasToCamera">Спробувати в камері <svg><use href="#i-arrow"/></svg></button>
+      </div>
+    </section>
+  </main>
+
+  <div id="sheetOverlay" class="overlay" hidden>
+    <div id="settingsSheet" class="sheet" hidden role="dialog" aria-modal="true" aria-label="Налаштування">
+      <div class="sheet-head"><h2>Налаштування</h2><button class="sheet-close icon-btn" data-close-sheet aria-label="Закрити"><svg><use href="#i-close"/></svg></button></div>
+      <div class="setting-row"><div><b>Пропорції фото</b><small>Обрізання знімка відбувається як на екрані</small></div><div id="ratioOptions" class="ratio-options"></div></div>
+      <div class="setting-row"><div><b>Товщина спіралі</b><small>Відображається й у фото з напрямною</small></div><input id="lineWidth" type="range" min="1" max="5" value="2" step="0.5" aria-label="Товщина лінії"></div>
+      <div class="setting-row"><div><b>Колір напрямної</b><small>Золотий або нейтральний білий</small></div><button id="colorBtn" class="secondary-button">Золотий</button></div>
+      <div class="setting-row"><div><b>Надати доступ до датчиків</b><small>Для приблизного наведення за нахилом</small></div><button id="sheetSensors" class="secondary-button">Увімкнути</button></div>
+      <button id="guideFromSettings" class="primary-cta settings-guide">Переглянути ідеї для фото <svg><use href="#i-arrow"/></svg></button>
+      <p class="settings-note">Ліхтарик доступний лише там, де браузер і задня камера підтримують керування LED. Усі знімки зберігаються локально в браузері.</p>
+    </div>
+    <div id="gallerySheet" class="gallery-sheet" hidden role="dialog" aria-modal="true" aria-label="Галерея">
+      <div class="sheet-head"><div><span class="eyebrow">ЛОКАЛЬНЕ СХОВИЩЕ</span><h2>Мої знімки</h2></div><button class="sheet-close icon-btn" data-close-sheet aria-label="Закрити"><svg><use href="#i-close"/></svg></button></div>
+      <div id="galleryGrid" class="gallery-grid"></div>
+      <div id="galleryEmpty" class="gallery-empty" hidden><svg><use href="#i-gallery"/></svg><b>Тут поки немає фото</b><p>Зробіть перший знімок у камері.</p></div>
+      <div id="photoDetails" class="photo-details" hidden>
+        <button id="backToGallery" class="secondary-button">← Усі знімки</button>
+        <div class="photo-preview"><img id="previewImage" alt="Попередній перегляд знімка"></div>
+        <div class="version-switch"><button data-version="guided" class="selected">Зі спіраллю</button><button data-version="raw">Без спіралі</button></div>
+        <div class="download-actions"><button id="downloadSelected" class="primary-cta"><svg><use href="#i-download"/></svg> Зберегти обраний</button><button id="downloadBoth" class="secondary-button"><svg><use href="#i-download"/></svg> Обидва в ZIP</button></div>
+        <button id="deletePhoto" class="delete-btn"><svg><use href="#i-trash"/></svg> Видалити цей знімок</button>
+      </div>
+    </div>
+  </div>
+  <div id="ideaLightbox" class="idea-lightbox" hidden role="dialog" aria-modal="true" aria-label="Приклад композиції">
+    <button id="closeIdeaLightbox" class="idea-lightbox-close" aria-label="Закрити приклад"><svg><use href="#i-close"/></svg></button>
+    <div id="ideaLightboxShot" class="idea-lightbox-shot"><img id="ideaLightboxImg" alt="Приклад фотографії"><canvas id="ideaLightboxCanvas" aria-hidden="true"></canvas></div>
+    <div class="idea-lightbox-copy"><span id="ideaLightboxCat"></span><h3 id="ideaLightboxTitle"></h3><p id="ideaLightboxDescription"></p><small>Золота лінія — приклад композиції, а не точна властивість об’єкта.</small></div>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>

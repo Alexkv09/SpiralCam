@@ -1,0 +1,26 @@
+{
+  "name": "SpiralCam — Золота спіраль",
+  "short_name": "SpiralCam",
+  "description": "Навчальна фотокамера із золотою спіраллю та розумним наведенням",
+  "lang": "uk",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080909",
+  "theme_color": "#080909",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
