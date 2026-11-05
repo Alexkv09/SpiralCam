@@ -38,29 +38,27 @@
   <main id="app" class="app">
     <section id="homeScreen" class="screen home-screen home-editorial" aria-label="Головна">
       <header class="home-topline">
-        <div class="home-logo"><span class="home-logo-symbol" aria-hidden="true">◉</span><span>SpiralCam<span class="home-logo-trademark">®</span></span></div>
-        <span class="home-topline-label">PHOTO STUDY<br>VOL. 001</span>
+        <div class="home-logo"><span class="home-logo-symbol" aria-hidden="true">◉</span><span>SpiralCam</span></div>
       </header>
       <div class="home-editorial-title">
-        <span class="home-kicker"><span class="home-kicker-marker"></span> ПОГЛЯНЬ ІНАКШЕ</span>
-        <h1>Мистецтво<br><em>бачити.</em></h1>
-        <p>Кожен кадр має свою історію. Знайди її у золотій спіралі.</p>
+        <h1>Геометрія<br><em>краси.</em></h1>
       </div>
-      <div class="home-contact-sheet" aria-label="Фотографія лисиці зі спіраллю Фібоначчі">
-        <div class="home-film-perforations" aria-hidden="true"><span>36</span><span>35</span><span>34</span></div>
+      <div class="home-contact-sheet" aria-label="Лисиця зі спіраллю Фібоначчі">
+        <div class="home-film-perforations" aria-hidden="true"></div>
         <figure class="home-photo-frame">
-          <img class="home-hero-photo" src="examples/animal-fox.webp" alt="Лисиця в лісі — приклад побудови композиції" fetchpriority="high" draggable="false">
+          <img class="home-hero-photo" src="examples/animal-fox.webp" alt="Лисиця в лісі — фотокомпозиція із золотою спіраллю" fetchpriority="high" draggable="false">
           <canvas id="heroCanvas" aria-hidden="true"></canvas>
-          <div class="home-photo-top" aria-hidden="true"><span>▲ GOLDEN RATIO</span><span>φ 1.618</span></div>
-          <figcaption class="home-photo-bottom"><span>FRAME / 001</span><span>ЗОЛОТА СПІРАЛЬ</span></figcaption>
         </figure>
       </div>
-      <div class="home-captionline"><span>01 — ВІДЧУЙ КОМПОЗИЦІЮ</span><span>← ФОТОГРАФУЙ ПО-НОВОМУ</span></div>
       <nav class="home-editorial-actions" aria-label="Почати">
-        <button id="openCamera" class="home-editorial-action home-editorial-action-primary"><span class="home-action-index">01 /</span><span class="home-action-title">Камера</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        <button id="openIdeas" class="home-editorial-action home-editorial-action-secondary"><span class="home-action-index">02 /</span><span class="home-action-title">Ідеї для фото</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <button id="openCamera" class="home-editorial-action home-editorial-action-primary"><svg class="home-action-lead" aria-hidden="true"><use href="#i-camera"/></svg><span class="home-action-title">Камера</span><svg class="home-action-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <button id="openIdeas" class="home-editorial-action home-editorial-action-secondary" aria-label="Ідеї для фото"><svg class="home-action-lead" aria-hidden="true"><use href="#i-lightbulb"/></svg><span class="home-action-title">Ідеї</span><svg class="home-action-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       </nav>
-      <footer class="home-editorial-footer"><span>SHOOT · LEARN · CREATE</span><span class="home-footer-mark">✳</span><span>© SPIRALCAM</span></footer>
+      <footer class="home-editorial-footer" aria-label="Підпис сайту">
+        <span>SHOOT · LEARN · CREATE</span>
+        <span class="home-footer-mark" aria-hidden="true">✳</span>
+        <span>© SPIRALCAM</span>
+      </footer>
     </section>
 
     <section id="cameraScreen" class="screen camera-screen" hidden aria-label="Камера">
@@ -102,19 +100,51 @@
       </div>
     </section>
 
-    <section id="ideasScreen" class="screen ideas-screen" hidden aria-label="Ідеї для фото">
-      <header class="sub-header"><button id="ideasBack" class="icon-btn"><svg><use href="#i-back"/></svg></button><span>Польовий гід</span></header>
+    <section id="ideasScreen" class="screen ideas-screen ideas-editorial" hidden aria-label="Ідеї для фото">
+      <header class="sub-header ideas-topline">
+        <button id="ideasBack" class="icon-btn" aria-label="На головну"><svg><use href="#i-back"/></svg></button>
+        <span class="ideas-wordmark">SpiralCam</span>
+        <span class="ideas-topline-label">ПОЛЬОВИЙ ГІД</span>
+      </header>
       <div class="ideas-content">
-        <span class="eyebrow">ФОТОГРАФІЯ + МАТЕМАТИКА</span><h2>Золота спіраль</h2><p class="ideas-lead">Проведіть погляд глядача по плавній кривій до головного об’єкта. Завиток підказує, куди розмістити найважливішу деталь.</p>
-        <div class="guide-preview"><canvas id="ideasCanvas"></canvas><div class="preview-label">Завиток → головний герой кадру</div></div>
-        <div class="info-strip"><span>φ ≈ 1,618</span><span>Поворот 90° → масштаб ×1,618</span></div>
-        <div class="ideas-section-head"><h3>Фотоідеї з прикладами</h3><span>5 добірок · 25 фото</span></div>
-        <p class="ideas-swipe-note">Гортайте приклади вбік. Натисніть на фото, щоб роздивитися спіраль зблизька.</p>
+        <header class="ideas-intro">
+          <div class="ideas-kicker"><span class="ideas-kicker-dot" aria-hidden="true"></span> НАТХНЕННЯ / ФОТОГРАФІЯ</div>
+          <h2>Ідеї<br><em>для фото.</em></h2>
+          <p class="ideas-lead">25 кадрів, у яких композиція працює на красу.</p>
+        </header>
+
+        <figure class="ideas-feature">
+          <div class="ideas-feature-shot">
+            <img src="examples/animal-bird.webp" alt="Птах на гілці — приклад композиції із золотою спіраллю" loading="lazy" draggable="false">
+            <canvas id="ideasCanvas" aria-hidden="true"></canvas>
+            <span class="ideas-feature-numeral">φ</span>
+          </div>
+          <figcaption class="ideas-feature-caption">
+            <span>ЗОЛОТА СПІРАЛЬ</span>
+            <span>Фокус на головному.</span>
+          </figcaption>
+        </figure>
+
+        <div class="ideas-section-head">
+          <h3>Дивіться й пробуйте.</h3>
+          <span>05 ТЕМ / 25 ФОТО</span>
+        </div>
+        <p class="ideas-swipe-note">Гортайте фото вбік · Натисніть для збільшення</p>
         <div id="ideasCatalog" class="ideas-catalog"></div>
-        <h3>Як працює «Датчик»</h3>
-        <div class="steps"><div><b>1</b><p>Увімкніть «Датчик» і дозвольте доступ до руху телефона.</p></div><div><b>2</b><p>Торкніться важливої деталі у відеокадрі — ціль закріпиться.</p></div><div><b>3</b><p>Повільно обертайте телефон на місці, суміщаючи мітку із завитком.</p></div><div><b>4</b><p>Коли напрямна зелена, фотографуйте.</p></div></div>
-        <div class="guide-caveat">Режим «Датчик» відстежує поворот телефона за гіроскопом, а не рух предмета у відео. Рухайте телефоном з однієї точки. Для точної фіксації об’єкта потрібен комп’ютерний зір.</div>
-        <button class="primary-cta" id="ideasToCamera">Спробувати в камері <svg><use href="#i-arrow"/></svg></button>
+
+        <section class="ideas-sensor-guide" aria-labelledby="ideasSensorTitle">
+          <div class="ideas-section-head"><h3 id="ideasSensorTitle">Режим «Датчик»</h3><span>НА ПРАКТИЦІ</span></div>
+          <p class="ideas-sensor-intro">Знайдіть свою точку фокусу та сумістіть її із завитком.</p>
+          <div class="steps">
+            <div><b>01</b><p>Увімкніть «Датчик» і надайте дозвіл на рух телефона.</p></div>
+            <div><b>02</b><p>Натисніть на важливу деталь у кадрі.</p></div>
+            <div><b>03</b><p>Повільно повертайте телефон, суміщаючи мітку із завитком.</p></div>
+            <div><b>04</b><p>Зелена спіраль — можна фотографувати.</p></div>
+          </div>
+          <p class="guide-caveat">Датчик орієнтується на поворот телефона, а не відстежує предмет у відео. Для точності обертайте телефон з однієї точки.</p>
+          <button class="primary-cta" id="ideasToCamera">Відкрити камеру <svg><use href="#i-arrow"/></svg></button>
+        </section>
+        <footer class="ideas-editorial-footer"><span>SPIRALCAM / PHOTO NOTES</span><span>© 2026</span></footer>
       </div>
     </section>
   </main>

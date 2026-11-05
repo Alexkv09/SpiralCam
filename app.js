@@ -192,7 +192,7 @@ function drawIdeas() {
   const canvas=$('ideasCanvas'); const r=canvas.getBoundingClientRect();
   if(!r.width||!r.height) return;
   const ctx=canvasContext(canvas,r.width,r.height);
-  renderGuide(ctx,r.width,r.height,{grid:false,rotation:0,scale:.9,color:'gold',lineWidth:2.2});
+  renderGuide(ctx,r.width,r.height,{anchor:{x:.68,y:.34},grid:false,rotation:1,scale:.88,color:'white',lineWidth:1.65});
 }
 /* Просторова геометрія: відносний поворот кватерніона замість незалежних
  * alpha/beta/gamma. Кут 359°→0° проходить без стрибка, а нахили не плутаються
@@ -528,7 +528,7 @@ function buildIdeasCatalog(){
   PHOTO_IDEAS.forEach((category,index)=>{
     const section=document.createElement('section');section.className='idea-category';
     const heading=document.createElement('div');heading.className='idea-category-head';
-    heading.innerHTML=`<span class="idea-category-symbol">${category.symbol}</span><div><h4>${category.title}</h4><p>${category.description}</p></div><small>0${index+1} / 05</small>`;
+    heading.innerHTML=`<span class="idea-category-index">0${index+1}</span><div><h4>${category.title}</h4><p>${category.description}</p></div><small>05 ФОТО</small>`;
     const track=document.createElement('div');track.className='idea-photo-track';
     category.examples.forEach((example,number)=>{
       const [title,description,src,x,y,rotation]=example;
