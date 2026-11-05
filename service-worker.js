@@ -1,5 +1,5 @@
 'use strict';
-const CACHE_NAME='spiralcam-app-v3';
+const CACHE_NAME='spiralcam-app-v4';
 const SHELL=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png',
   './examples/animal-cat.webp','./examples/animal-dog.webp','./examples/animal-bird.webp','./examples/animal-butterfly.webp','./examples/animal-fox.webp'];
 self.addEventListener('install', event => {

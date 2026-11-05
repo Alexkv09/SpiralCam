@@ -158,3 +158,73 @@ html, body {height:100%;overflow:hidden}
 /* Той самий кадр 4:5 у галереї і розгорнутому фото:
    однакові координати завитка без зсуву через різне обрізання. */
 .idea-shot {aspect-ratio:4/5}
+
+/* SpiralCam v4 — фото-редакційний головний екран. Вікно камери НЕ стилізуємо. */
+html, body, .app { touch-action:pan-x pan-y; }
+button, a, canvas, img { -webkit-touch-callout:none; -webkit-tap-highlight-color:transparent; }
+.home-editorial {
+  --paper:#eeeae0; --ink:#181917; --signal:#e25435;
+  display:flex; flex-direction:column; gap:0;
+  height:100svh; min-height:0; overflow:hidden;
+  padding:calc(var(--safe-top) + 15px) 19px calc(var(--safe-bottom) + 12px);
+  color:var(--ink); background:var(--paper);
+  background-image:repeating-linear-gradient(0deg,transparent 0 3px,rgba(42,41,37,.015) 4px 5px);
+}
+.home-editorial .home-topline {display:flex;align-items:center;justify-content:space-between;flex:0 0 auto;min-height:31px;gap:10px}
+.home-editorial .home-logo {display:flex;align-items:center;gap:9px;font-size:21px;letter-spacing:-1.15px;font-weight:850;line-height:1;color:var(--ink)}
+.home-editorial .home-logo-symbol {display:grid;place-items:center;width:28px;height:28px;background:var(--ink);border-radius:50%;color:var(--paper);font-size:17px;font-weight:400;line-height:1}
+.home-editorial .home-logo-trademark {font-size:9px;vertical-align:top;margin-left:2px;letter-spacing:0}
+.home-editorial .home-topline-label {font:700 9px/1.35 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:1px;text-align:right;color:#77766d}
+.home-editorial-title {flex:0 0 auto;margin:clamp(11px,2.4svh,24px) 0 clamp(10px,1.7svh,18px)}
+.home-editorial .home-kicker {display:flex;align-items:center;gap:7px;font:750 9px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:2.1px;color:#65665f}
+.home-editorial .home-kicker-marker {width:18px;height:2px;background:var(--signal);display:inline-block}
+.home-editorial-title h1 {font:normal clamp(41px,12vw,62px)/.85 Georgia,'Times New Roman',serif;letter-spacing:-2.2px;margin:10px 0 10px;color:var(--ink)}
+.home-editorial-title h1 em {font-weight:normal;font-style:italic;color:var(--ink)}
+.home-editorial-title p {font-size:clamp(11px,2.9vw,13px);line-height:1.35;color:#64655f;max-width:335px;margin:0}
+.home-contact-sheet {flex:1 1 auto;min-height:145px;max-height:390px;display:flex;border:1px solid #22231f;background:#22231f;overflow:hidden}
+.home-film-perforations {flex:0 0 20px;background:#20211f;display:flex;flex-direction:column;align-items:center;justify-content:space-around;padding:7px 0;color:#b6ae97;font:7px ui-monospace,monospace;letter-spacing:.1px;position:relative}
+.home-film-perforations:before {content:'';position:absolute;inset:7px 0;background-image:radial-gradient(ellipse 5px 7px at center,#eae6dc 0 60%,transparent 65%);background-size:20px 24px;background-repeat:repeat-y;background-position:center;opacity:.95}
+.home-film-perforations span {position:relative;z-index:1;background:#20211f;padding:3px 0;transform:rotate(-90deg)}
+.home-photo-frame {margin:0;flex:1;min-width:0;min-height:0;position:relative;overflow:hidden;background:#3c4534;isolation:isolate}
+.home-hero-photo {position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:50% 40%;filter:saturate(.80) contrast(1.11);user-select:none}
+.home-photo-frame:after {content:'';position:absolute;inset:0;background:linear-gradient(180deg,#090c0c88,transparent 29%,transparent 58%,#0b100dad);pointer-events:none;z-index:2}
+.home-photo-frame #heroCanvas {position:absolute;inset:0;display:block;width:100%;height:100%;z-index:1;pointer-events:none}
+.home-photo-top,.home-photo-bottom {z-index:3;position:absolute;left:11px;right:11px;display:flex;align-items:center;justify-content:space-between;gap:8px;color:#f5f0df;font:700 9px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.9px;text-shadow:0 1px 3px #0009}
+.home-photo-top {top:12px}.home-photo-bottom{bottom:12px}
+.home-photo-top span:first-child {color:#f3df9f}
+.home-captionline {display:flex;justify-content:space-between;gap:8px;flex:0 0 auto;margin:9px 0 clamp(13px,2.6svh,24px);font:700 8px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.65px;color:#77766e}
+.home-captionline span:last-child{text-align:right}
+.home-editorial-actions {display:flex;flex-direction:column;gap:8px;flex:0 0 auto}
+.home-editorial-action {width:100%;min-height:clamp(53px,7.6svh,70px);display:flex;align-items:center;gap:12px;border:1.5px solid var(--ink);border-radius:3px;padding:11px 15px;text-align:left;color:var(--ink);background:transparent;touch-action:manipulation}
+.home-editorial-action-primary {background:var(--ink);color:#f4f0e6}
+.home-editorial-action-secondary {background:transparent}
+.home-editorial-action .home-action-index {font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;opacity:.55;letter-spacing:.8px}
+.home-editorial-action .home-action-title {font:750 clamp(17px,4.4vw,21px)/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:-.5px;flex:1}
+.home-editorial-action svg {width:23px;height:23px;stroke-width:1.7;transition:transform .18s}
+.home-editorial-action:active svg {transform:translateX(4px)}
+.home-editorial-action:focus-visible {outline:3px solid var(--signal);outline-offset:3px}
+.home-editorial-footer {flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;margin-top:clamp(10px,1.7svh,20px);font:700 8px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:1px;color:#77766f}
+.home-footer-mark {font-size:17px;line-height:.7;color:var(--signal)}
+@media(max-height:740px){
+ .home-editorial{padding-top:calc(var(--safe-top) + 9px);padding-bottom:calc(var(--safe-bottom) + 7px)}
+ .home-editorial-title{margin:9px 0 8px}
+ .home-editorial-title h1{font-size:clamp(36px,10.3vw,49px);margin:6px 0 5px}
+ .home-editorial-title p{font-size:11px;line-height:1.2}
+ .home-captionline{margin:6px 0 8px;font-size:7px}
+ .home-editorial-actions{gap:6px}
+ .home-editorial-action{min-height:48px;padding:8px 12px}
+ .home-editorial-footer{margin-top:8px}
+}
+@media(max-height:580px){
+ .home-editorial-title h1{font-size:clamp(32px,9vw,41px)}
+ .home-editorial-title p{display:none}
+ .home-editorial-title{margin:5px 0 6px}
+ .home-contact-sheet{min-height:95px}
+ .home-editorial-action{min-height:43px}
+ .home-captionline span:last-child{display:none}
+ .home-editorial-footer{margin-top:5px}
+}
+@media(min-width:540px){
+ .home-editorial{padding-left:28px;padding-right:28px}
+ .home-editorial-title h1{font-size:64px}
+}

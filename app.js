@@ -183,8 +183,10 @@ function drawHero() {
   const canvas = $('heroCanvas'); const r=canvas.getBoundingClientRect();
   if (!r.width||!r.height) return;
   const ctx=canvasContext(canvas,r.width,r.height);
-  ctx.globalAlpha=.93;
-  renderGuide(ctx,r.width,r.height,{grid:true,rotation:0,scale:.91,color:'gold',lineWidth:1.9});
+  // Спіраль малюється поверх справжнього фото, як у фотокамері.
+  // Завиток спрямовано на око лисиці в центральній композиції.
+  ctx.globalAlpha=.86;
+  renderGuide(ctx,r.width,r.height,{anchor:{x:.72,y:.38},grid:false,rotation:1,scale:.77,color:'white',lineWidth:1.45});
 }
 function drawIdeas() {
   const canvas=$('ideasCanvas'); const r=canvas.getBoundingClientRect();
@@ -699,6 +701,21 @@ async function downloadBoth(){
     const zip=makeZip(entries);downloadBlob(zip,photoName(photo,'both').replace('.jpg','.zip'));
   }catch(e){console.error(e);toast('Не вдалося створити ZIP');}
 }
+
+/* Заборона небажаного збільшення сторінки на iOS Safari та Android.
+ * CSS touch-action зберігає прокручування в «Ідеях» і галереї, але
+ * вимикає pinch-zoom і double-tap zoom. Додаткова страховка для iOS Safari. */
+function preventPageMagnification(event){event.preventDefault();}
+for(const eventName of ['gesturestart','gesturechange','gestureend']) {
+  document.addEventListener(eventName,preventPageMagnification,{passive:false});
+}
+document.addEventListener('touchstart',event=>{
+  if(event.touches.length>1)event.preventDefault();
+},{passive:false});
+document.addEventListener('touchmove',event=>{
+  if(event.touches.length>1)event.preventDefault();
+},{passive:false});
+document.addEventListener('dblclick',event=>event.preventDefault(),{passive:false});
 
 /* ПІДПИСКИ НА ПОДІЇ */
 $('openCamera').addEventListener('click',()=>showScreen('camera'));
